@@ -31,9 +31,12 @@ public class ApplicationTests {
 
     }
 
-    /**
-     *
-     */
+    @Test
+    public void testUpLoad() {
+        //测试提交git
+    }
+
+
     @Test
     public void findALl() {
         List<Person> personList = personRepository.findAll();
