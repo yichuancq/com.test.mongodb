@@ -13,7 +13,7 @@ import java.util.List;
 public interface UserRepository extends MongoRepository<Users, String> {
 
 
-    void test();
+    void test() throws Exception;
 
     List<Users> findAll();
 
