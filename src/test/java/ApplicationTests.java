@@ -2,7 +2,9 @@ import com.mongodb.App;
 import com.mongodb.base.Address;
 import com.mongodb.base.Person;
 import com.mongodb.base.Street;
+import com.mongodb.base.Users;
 import com.mongodb.repository.PersonRepository;
+import com.mongodb.repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class ApplicationTests {
     @Autowired
     protected PersonRepository personRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @Test
     public void findByPersonId() {
         Person p = personRepository.findOne("101");//
@@ -32,8 +37,33 @@ public class ApplicationTests {
     }
 
     @Test
-    public void testUpLoad() {
-        //测试提交git
+    public void testAddUser() {
+        Users users = new Users();
+        users.setAge(32);
+        users.setSex("nam");
+        users.setId("333");
+        users.setName("tesAAA");
+        users.setJob("软件工程师");
+        //
+
+        Address address = new Address();
+        address.setAddr("地址A");
+        address.setPro("地址B");
+        users.setAddress(address);
+
+        userRepository.save(users);//
+        Users tmp = userRepository.findOne("333");//
+
+        //
+        System.out.println("v:" + tmp.toString() + tmp.getAddress().toString());
+
+
+        tmp.setJob("我是修改后的名字");
+        userRepository.save(tmp);//
+
+        //
+        Users tmp2 = userRepository.findOne("333");//
+        System.out.println("v:" + tmp2.toString() + tmp2.getAddress().toString());
     }
 
 

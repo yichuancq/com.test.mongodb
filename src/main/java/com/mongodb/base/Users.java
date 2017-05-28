@@ -6,54 +6,37 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * Created by Administrator on 2016/10/30.
  */
-@Document(collection = "users")
-public class Users {
+@Document
+public class Users extends Person {
 
     @Id
     private String id;
-    private String name;
-    private int age;
 
-    public Users() {
+    private String job;
+
+    @Override
+    public String getId() {
+        return id;
     }
 
-    public Users(String id, String name, int age) {
+    @Override
+    public void setId(String id) {
         this.id = id;
-        this.name = name;
-        this.age = age;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
     }
 
     @Override
     public String toString() {
         return "Users{" +
                 "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
+                ", job='" + job + '\'' +
                 '}';
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 }

@@ -71,8 +71,6 @@ public class UserController {
     @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
     public List<Users> findTwo() {
 
-        //return mongoTemplate.findAll(Users.class);
-        //do
         return userRepository.findAll();
     }
 
@@ -99,11 +97,11 @@ public class UserController {
         String str = "";
         //
         // final List<Users> usersList = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            Users user = new Users(null, "name" + i, 10 + i);
-            userRepository.save(user);
-            System.out.println("" + user.toString());
-        }
+//        for (int i = 0; i < 50; i++) {
+//            Users user = new Users(null, "name" + i, 10 + i);
+//            userRepository.save(user);
+//            System.out.println("" + user.toString());
+//        }
 
         return str;
     }

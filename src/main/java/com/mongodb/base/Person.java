@@ -1,14 +1,12 @@
 package com.mongodb.base;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * Created by yichuan on 2017/5/25.
  */
-@Document
+//@Document
 public class Person implements Serializable {
 
    // @Field
