@@ -25,11 +25,8 @@ public class DispBillTests {
     @Autowired
     protected MongoTemplate mongoTemplate;
 
-
     @Autowired
     private DispatchApp dispatchApp;
-//
-
 
     /**
      * 通过明细的hid 查询 单号,修改后保存单据
