@@ -2,7 +2,11 @@ package com.mongodb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.context.request.async.DeferredResult;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
@@ -15,8 +19,9 @@ import static springfox.documentation.builders.PathSelectors.regex;
 /**
  * Created by Administrator on 2016/10/30.
  */
-@SpringBootApplication
 @EnableSwagger2
+@EnableScheduling
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
