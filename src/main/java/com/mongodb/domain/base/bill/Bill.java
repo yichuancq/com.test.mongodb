@@ -11,10 +11,8 @@ import java.util.List;
 
 @Document(collection = "dispatch_bill")
 public class Bill extends BaseEntity {
-
     @OneToMany
     private List<BillItem> dispatchBillItemList;
-
     @Id
     private String id;
     /**
