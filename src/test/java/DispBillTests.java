@@ -7,23 +7,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = App.class)// 指定spring-boot的启动类
-public class DispBillTests {
+@SpringBootTest(classes = App.class)
 
+public class DispBillTests {
     @Autowired
     JpaDispatchRepository jpaDispatchRepository;
-
-    @Autowired
-    protected MongoTemplate mongoTemplate;
 
     @Autowired
     private DispatchApp dispatchApp;
@@ -33,18 +27,10 @@ public class DispBillTests {
      */
     @Test
     public void findAndUpdate() {
-        String hid = "H001";
-        Query query = Query.query(Criteria.where("dispatchBillItemList.h_Id").is(hid));
-        //Query query = Query.query(Criteria.where("bill_id").is(bill_id));
-        List<Bill> billList = mongoTemplate.find(query, (Bill.class));
-        for (Bill bill : billList) {
-            for (BillItem billItem : bill.getDispatchBillItemList()) {
-                billItem.sethId("H001-修改");
-            }
-        }
-        jpaDispatchRepository.save(billList);
+        String oldhId = "";
+        String newhId = "";
+        dispatchApp.findAndUpdate(oldhId, newhId);
     }
-
 
     @Test
     public void testAdd() {
@@ -60,7 +46,6 @@ public class DispBillTests {
         }
         bill.setDispatchBillItemList(billItems);
         dispatchApp.save(bill);
-
 
         Bill bill2 = new Bill();
         List<BillItem> billItems2 = new ArrayList<>();
@@ -100,7 +85,6 @@ public class DispBillTests {
 //        collection.updateMany(filter, document);
 //    }
 
-//
 //    @Test
 //    public void testUpdate() {
 //        String hid = "wwww";
@@ -118,8 +102,6 @@ public class DispBillTests {
 //        } catch (Exception e) {
 //            e.getStackTrace();
 //        }
-//
-//
 //    }
 
 
