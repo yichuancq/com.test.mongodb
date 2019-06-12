@@ -30,7 +30,6 @@ public class DispatchApp {
      */
     public void findAndUpdate(String oldId, String newhId) {
         Query query = Query.query(Criteria.where("dispatchBillItemList.h_Id").is(oldId));
-        //Query query = Query.query(Criteria.where("bill_id").is(bill_id));
         List<Bill> billList = mongoTemplate.find(query, (Bill.class));
         for (Bill bill : billList) {
             for (BillItem billItem : bill.getDispatchBillItemList()) {
