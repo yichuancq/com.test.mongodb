@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class DispatchRepositoryImpl implements DispatchRepository {
+
     @Autowired
     JpaDispatchRepository jpaDispatchRepository;
 
