@@ -3,8 +3,7 @@ package com.mongodb.base;
 /**
  * Created by yichuan on 2017/5/27.
  */
-public class Street
-{
+public class Street {
     private String roadName;
     private String postCode;
 
