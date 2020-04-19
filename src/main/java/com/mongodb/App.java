@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.context.request.async.DeferredResult;
 import springfox.documentation.service.ApiInfo;
@@ -36,7 +35,6 @@ public class App {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("user")
                 .genericModelSubstitutes(DeferredResult.class)
-//                .genericModelSubstitutes(ResponseEntity.class)
                 .useDefaultResponseMessages(false)
                 .forCodeGeneration(true)
                 .pathMapping("/")// base，最终调用接口后会和paths拼接在一起
@@ -52,7 +50,7 @@ public class App {
                 "0.1",//版本
                 "NO terms of service",
                 "易川",//作者
-                "西西弗信息部",//链接显示文字
+                "yichuancq@163.com",//链接显示文字
                 "http://www.apache.org/licenses/LICENSE-2.0.html"//网站链接
         );
         return apiInfo;
